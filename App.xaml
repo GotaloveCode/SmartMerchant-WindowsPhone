@@ -1,16 +1,20 @@
-﻿<Application
-    x:Class="SmartMerchant.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SmartMerchant">
-    <Application.Resources>
-        <local:BooleanNegationConverter x:Key="BooleanNegationConverter" />
-        <Color x:Key="MenuColor">#0b2027</Color>
-        <SolidColorBrush x:Key="MyBlack" Color="{StaticResource MenuColor}" />
-        <Color x:Key="NavColor">#FFCFD7C7</Color>
-        <SolidColorBrush x:Key="MyGreen" Color="{StaticResource NavColor}" />
-        <Color x:Key="ButtonColor">#63adf2</Color>
-        <SolidColorBrush x:Key="MyBlue" Color="{StaticResource ButtonColor}" />
-    </Application.Resources>
-
+﻿<Application x:Class="SmartMerchant.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="using:SmartMerchant" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d1p1:Ignorable="d" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SmartMerchant.ViewModel">
+  <Application.Resources>    
+    <ResourceDictionary>
+            <local:BooleanNegationConverter x:Key="BooleanNegationConverter" />
+            <Color x:Key="MenuColor">#0b2027</Color>
+            <SolidColorBrush x:Key="MyBlack" Color="{StaticResource MenuColor}" />
+            <Color x:Key="NavColor">#FFCFD7C7</Color>
+            <SolidColorBrush x:Key="MyGreen" Color="{StaticResource NavColor}" />
+            <Color x:Key="ButtonColor">#63adf2</Color>
+            <SolidColorBrush x:Key="MyBlue" Color="{StaticResource ButtonColor}" />
+            <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True"  />
+    </ResourceDictionary>
+  </Application.Resources>
 </Application>

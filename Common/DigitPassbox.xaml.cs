@@ -37,10 +37,10 @@ namespace SmartMerchant
 
             if (string.IsNullOrEmpty(Password) && e.Key == VirtualKey.Back)
                 FocusManager.TryMoveFocus(FocusNavigationDirection.Previous);
-            
+
             Password = GetNewPasscode(Password, e);
             DigitPasswordBox.Text = string.IsNullOrEmpty(Password) ? string.Empty : Regex.Replace(Password, @".", _passwordChar);
-            
+
             if (DigitPasswordBox.Text.Length > 0)
                 FocusManager.TryMoveFocus(FocusNavigationDirection.Next);
 
@@ -70,7 +70,7 @@ namespace SmartMerchant
                     break;
                 case VirtualKey.Number4:
                 case VirtualKey.NumberPad4:
-                    newPasscode =  "4";
+                    newPasscode = "4";
                     break;
                 case VirtualKey.Number5:
                 case VirtualKey.NumberPad5:
@@ -86,7 +86,7 @@ namespace SmartMerchant
                     break;
                 case VirtualKey.Number8:
                 case VirtualKey.NumberPad8:
-                    newPasscode =  "8";
+                    newPasscode = "8";
                     break;
                 case VirtualKey.Number9:
                 case VirtualKey.NumberPad9:

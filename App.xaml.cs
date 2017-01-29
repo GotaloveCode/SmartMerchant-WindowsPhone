@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.Phone.UI.Input;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
@@ -35,6 +27,7 @@ namespace SmartMerchant
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
 
         /// <summary>
@@ -91,17 +84,45 @@ namespace SmartMerchant
                 rootFrame.ContentTransitions = null;
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
 
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+               
+
+                  // When the navigation stack isn't restored navigate to the first page,
+                if (ApplicationData.Current.LocalSettings.Values.ContainsKey("Token"))
                 {
-                    throw new Exception("Failed to create initial page");
+                    Rest.Token = ApplicationData.Current.LocalSettings.Values["Token"].ToString();
+                    if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                        throw new Exception("Failed to create initial page");
+
+                }
+                else
+                {
+                    if (ApplicationData.Current.LocalSettings.Values.ContainsKey("Registered"))
+                    {
+                        if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                            throw new Exception("Failed to create initial page");
+                    }
+                    else
+                    {
+                        if (!rootFrame.Navigate(typeof(LoginPage), e.Arguments))
+                            throw new Exception("Failed to create initial page");
+                    }
                 }
             }
 
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            if (rootFrame != null && rootFrame.CanGoBack)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
+            }
+
         }
 
         /// <summary>

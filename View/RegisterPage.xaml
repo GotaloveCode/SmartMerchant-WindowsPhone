@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    DataContext="{Binding Path=Register,Source={StaticResource Locator}}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="#FFEEEFF1">
@@ -15,7 +16,7 @@
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Background="{StaticResource MyBlack}">
-            <TextBlock x:Uid="Merchant" Text="MERCHANT REGISTRATION" FontSize="{StaticResource TextStyleLargeFontSize}" HorizontalAlignment="Center" Margin="0,5"/>
+            <TextBlock x:Uid="Merchant" Text="MERCHANT REGISTRATION" FontSize="{StaticResource TextStyleExtraLargeFontSize}" HorizontalAlignment="Center" Margin="0,5"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="30,0">
             <StackPanel.Resources>
@@ -34,10 +35,8 @@
             </StackPanel.Resources>
             <TextBlock x:Uid="BusinessName" Text="Business Name "  Margin="0,20,0,0" />
             <TextBox HorizontalAlignment="Stretch" 
-                      Text="{Binding FullName, Mode=TwoWay}"/>
-            <TextBlock x:Uid="Username" Text="Username " />
-            <TextBox HorizontalAlignment="Stretch" 
-                      Text="{Binding Username, Mode=TwoWay}"/>
+                      Text="{Binding BusinessName, Mode=TwoWay}"/>
+            
             <TextBlock x:Uid="Email" Text="Email " />
             <TextBox HorizontalAlignment="Stretch" InputScope="EmailSmtpAddress"
                       Text="{Binding Email, Mode=TwoWay}"/>
@@ -57,55 +56,23 @@
                              Command="{Binding VerifyCommand}"  VerticalAlignment="Center" Margin="5,0,0,0"
                         IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanNegationConverter}}"  />
             </Grid>
-            <TextBlock x:Uid="txtCode" Text="Code" />
+            <TextBlock x:Uid="Code" Text="Code" />
             <TextBox HorizontalAlignment="Stretch" InputScope="Number"
                       Text="{Binding Code, Mode=TwoWay}"/>
 
             <TextBlock x:Uid="Password" Text="Password" />
-            
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <local:DigitPassbox Grid.Column="0" x:Name="Pass1" Password="{Binding Password1,Mode=TwoWay}"/>
-                <local:DigitPassbox Grid.Column="1" Password="{Binding Password2,Mode=TwoWay}" />
-                <local:DigitPassbox Grid.Column="2" Password="{Binding Password3,Mode=TwoWay}" />
-                <local:DigitPassbox Grid.Column="3" Password="{Binding Password4,Mode=TwoWay}" />
-                <local:DigitPassbox Grid.Column="4" Password="{Binding Password5,Mode=TwoWay}" />
-                <local:DigitPassbox Grid.Column="5" Password="{Binding Password6,Mode=TwoWay}" />
 
-            </Grid>
+            <PasswordBox Password="{Binding Password,Mode=TwoWay}"/>
 
             <TextBlock x:Uid="ConfirmPassword" Text="Confirm Password" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <local:DigitPassbox Grid.Column="0" Password="{Binding Confirm1,Mode=TwoWay}"/>
-                <local:DigitPassbox Grid.Column="1" Password="{Binding Confirm2,Mode=TwoWay}" />
-                <local:DigitPassbox Grid.Column="2" Password="{Binding Confirm3,Mode=TwoWay}" />
-                <local:DigitPassbox Grid.Column="3" Password="{Binding Confirm4,Mode=TwoWay}" />
-                <local:DigitPassbox Grid.Column="4" Password="{Binding Confirm5,Mode=TwoWay}" />
-                <local:DigitPassbox Grid.Column="5" Password="{Binding Confirm6,Mode=TwoWay}" />
-
-            </Grid>
-
+            <PasswordBox Password="{Binding Confirm,Mode=TwoWay}"/>
 
         </StackPanel>
         <StackPanel Grid.Row="2" Background="{StaticResource MyBlue}">
             <Button Command="{Binding RegisterCommand}" Content="SUBMIT" 
                     Background="{StaticResource MyBlue}" BorderBrush="{StaticResource MyBlue}"
-                    x:Uid="Submit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    x:Uid="Submit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanNegationConverter}}"/>
         </StackPanel>
 
     </Grid>

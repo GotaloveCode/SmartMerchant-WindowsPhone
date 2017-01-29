@@ -1,13 +1,11 @@
 ﻿namespace SmartMerchant
 {
-
-    public sealed partial class RegisterPage : BindablePage
+    public sealed partial class AddUserPage : BindablePage
     {
-        public RegisterPage()
+        public AddUserPage()
         {
             this.InitializeComponent();
         }
-
-       
+      
     }
 }

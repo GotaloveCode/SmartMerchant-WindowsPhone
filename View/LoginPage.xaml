@@ -1,0 +1,71 @@
+﻿<local:BindablePage
+    x:Class="SmartMerchant.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SmartMerchant"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Login, Source={StaticResource Locator}}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+
+        </Grid.Resources>
+
+        <StackPanel VerticalAlignment="Top" Background="{StaticResource MyBlack}">
+            <Image Height="60" Source="ms-appx:///Assets/top.png"/>
+        </StackPanel>
+        <Image Grid.Row="1" Source="ms-appx:///Assets/receipt.png" Stretch="Fill" Height="200" />
+        <StackPanel Grid.Row="2" Margin="30,40,30,0">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="18"/>
+                </Style>
+            </StackPanel.Resources>
+
+
+            <TextBlock x:Uid="Phone" Text="Phone"  Margin="0,0,0,5"/>
+            <TextBox  HorizontalAlignment="Stretch" 
+                      Text="{Binding Phone, Mode=TwoWay}"
+                      InputScope="TelephoneNumber"
+                       MaxLength="12"
+                       Background="Transparent"
+                       BorderBrush="Black"
+                       BorderThickness="0,0,0,1"
+                       Margin="0,0,0,10"  />
+
+            <TextBlock x:Uid="Password" Text="Password" Margin="0,0,0,5"/>
+
+            <PasswordBox Password="{Binding Password,Mode=TwoWay}" BorderThickness="0,0,0,1"
+                         BorderBrush="Black"/>
+
+            <Button x:Uid="btnSignIn"
+                    Background="#63adf2"
+                    Content="SIGN IN"
+                    Foreground="white"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                    Command="{Binding SignInCommand}"
+                    Margin="0,15,0,10" 
+                    BorderBrush="#63adf2"/>
+
+            <TextBlock x:Uid="Forgot" FontStyle="Italic" Margin="0" HorizontalAlignment="Center" FontSize="16"
+                       Text="Forgot Password? Click here to reset"/>
+
+
+
+
+        </StackPanel>
+
+
+    </Grid>
+</local:BindablePage>
+

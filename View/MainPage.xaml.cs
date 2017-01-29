@@ -28,27 +28,25 @@ using ZXing.Common;
 
 namespace SmartMerchant
 {
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : BindablePage
     {
-        public string TillNo { get; set; }
         public string ScannedCard { get; set; }
-
         ResourceLoader res = ResourceLoader.GetForCurrentView();
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         DisplayRequest m_displayRequest = new DisplayRequest();
         MediaCapture m_capture;
         ContinuousAutoFocus m_autoFocus;
         bool m_initializing;
+        volatile bool m_snapRequested;
         BarcodeReader m_reader = new BarcodeReader
         {
             Options = new DecodingOptions
             {
-                PossibleFormats = new BarcodeFormat[] { BarcodeFormat.QR_CODE, BarcodeFormat.CODE_128 },
+                PossibleFormats = new BarcodeFormat[] { BarcodeFormat.QR_CODE },
                 TryHarder = true
             }
-        };
-        //Stopwatch m_time = new Stopwatch();
-        volatile bool m_snapRequested;
+        };        
+        
 
         public MainPage()
         {
@@ -58,15 +56,7 @@ namespace SmartMerchant
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ////get tillno
-            //if (localSettings.Values["TillNo"] == null)
-            //    Frame.Navigate(typeof(RegisterPage));
-            //else
-            //    TillNo = localSettings.Values["TillNo"].ToString();
-
-            ////clear text
             ScannedCard = "";
-
             // Prevent screen timeout
             m_displayRequest.RequestActive();
             Application.Current.Suspending += App_Suspending;
@@ -173,7 +163,7 @@ namespace SmartMerchant
             }
             catch (Exception e)
             {
-                MessageDialog dialog = new MessageDialog(String.Format("Failed to start the camera: {0}", e.Message));
+                MessageDialog dialog = new MessageDialog(string.Format("Failed to start the camera: {0}", e.Message));
                 await dialog.ShowAsync();
 
             }
@@ -372,12 +362,7 @@ namespace SmartMerchant
                 input.Add("user_token", ScannedCard);
                 input.Add("amount", txtAmount.Text);
 
-                string jsonstr = input.Stringify();
-
-                string Url = "charge-card";
-
-                var MyResult = await Rest.PostAsync(Url, jsonstr);
-
+                var MyResult = await Rest.PostAsync("charge-card", input.Stringify());
 
                 HttpStatusCode statuscode = MyResult.Key;
 
@@ -409,14 +394,7 @@ namespace SmartMerchant
         {
             FrameworkElement s = sender as FrameworkElement;
             Flyout.ShowAttachedFlyout(s);
-
         }
-
-
-
-
-
-
 
     }
 }

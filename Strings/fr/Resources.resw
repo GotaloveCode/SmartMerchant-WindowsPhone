@@ -130,18 +130,207 @@
     <value>Pas de connectivité internet</value>
   </data>
   <data name="BusinessName.Text" xml:space="preserve">
-    <value>Business Name</value>
+    <value>Nom de l'entreprise</value>
   </data>
   <data name="Email.Text" xml:space="preserve">
-    <value>Email</value>
+    <value>Courriel</value>
   </data>
   <data name="Merchant.Text" xml:space="preserve">
-    <value>MERCHANT REGISTRATION</value>
-  </data>
-  <data name="Username.Text" xml:space="preserve">
-    <value>Username</value>
+    <value>ENREGISTREMENT COMMERCIAL</value>
   </data>
   <data name="Verify.Text" xml:space="preserve">
-    <value>Verify-Email</value>
+    <value>Vérifier l'adresse électronique</value>
+  </data>
+  <data name="btnVerify.Content" xml:space="preserve">
+    <value>VÉRIFIER</value>
+  </data>
+  <data name="ConfirmPIN.Text" xml:space="preserve">
+    <value>Confirmer le mot de passe</value>
+  </data>
+  <data name="InvalidPhone" xml:space="preserve">
+    <value>Numéro de téléphone invalide</value>
+  </data>
+  <data name="MatchEmail" xml:space="preserve">
+    <value>Le courriel ne correspond pas</value>
+  </data>
+  <data name="MatchPIN" xml:space="preserve">
+    <value>Les code PIN ne correspondent pas.</value>
+  </data>
+  <data name="PIN.Text" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="Phone.Text" xml:space="preserve">
+    <value>N° de téléphone portable</value>
+  </data>
+  <data name="RequiredCode" xml:space="preserve">
+    <value>Code de vérification est exigé.</value>
+  </data>
+  <data name="RequiredEmail" xml:space="preserve">
+    <value>L'email est requis</value>
+  </data>
+  <data name="RequiredPIN" xml:space="preserve">
+    <value>Code PIN est nécessaire</value>
+  </data>
+  <data name="Submit.Content" xml:space="preserve">
+    <value>APPLIQUER</value>
+  </data>
+  <data name="ValidPIN" xml:space="preserve">
+    <value>Le code PIN doit avoir 4 chiffres</value>
+  </data>
+  <data name="AddCard.Text" xml:space="preserve">
+    <value>AJOUTER CARTE</value>
+  </data>
+  <data name="Agent.Text" xml:space="preserve">
+    <value>ENREGISTREMENT DE L'AGENT</value>
+  </data>
+  <data name="AgentApp.Text" xml:space="preserve">
+    <value>Application de l'agent</value>
+  </data>
+  <data name="Bank.Text" xml:space="preserve">
+    <value>Banque</value>
+  </data>
+  <data name="btnSignIn.Content" xml:space="preserve">
+    <value>CONNEXION</value>
+  </data>
+  <data name="CardNo.Text" xml:space="preserve">
+    <value>N ° De Carte</value>
+  </data>
+  <data name="CardRemoved" xml:space="preserve">
+    <value>Carte supprimée avec succès</value>
+  </data>
+  <data name="CreatePin.Text" xml:space="preserve">
+    <value>Créer code PIN</value>
+  </data>
+  <data name="Edit.Text" xml:space="preserve">
+    <value>EDMODIFIER</value>
+  </data>
+  <data name="EditCard.Text" xml:space="preserve">
+    <value>MODIFIER LA CARTE</value>
+  </data>
+  <data name="Enter.Text" xml:space="preserve">
+    <value>Entrer le montant à facturer</value>
+  </data>
+  <data name="Enterphone" xml:space="preserve">
+    <value>Entrer un numéro de téléphone valide</value>
+  </data>
+  <data name="EnterPin.Text" xml:space="preserve">
+    <value>Entrer le code PIN</value>
+  </data>
+  <data name="Expiry.Text" xml:space="preserve">
+    <value>Date d'expiration</value>
+  </data>
+  <data name="Generate.Content" xml:space="preserve">
+    <value>GÉNÉRER</value>
+  </data>
+  <data name="GenerateQr.Text" xml:space="preserve">
+    <value>GÉNÉRER QR</value>
+  </data>
+  <data name="IdNo.PlaceholderText" xml:space="preserve">
+    <value>Entrer N° de l’ID/ N° de Passport</value>
+  </data>
+  <data name="IncorrectCredentials" xml:space="preserve">
+    <value>Identification incorrectes fournies</value>
+  </data>
+  <data name="NeedCard" xml:space="preserve">
+    <value>Ajouter Détails de la carte en premier</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="NoCards.Text" xml:space="preserve">
+    <value>Pas de cartes</value>
+  </data>
+  <data name="ConfirmPassword.Text" xml:space="preserve">
+    <value>Confirmer le mot de passe</value>
+  </data>
+  <data name="MatchPassword" xml:space="preserve">
+    <value>Le mot de passe ne correspond pas.</value>
+  </data>
+  <data name="Password.Text" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="Print.Content" xml:space="preserve">
+    <value>IMPRIMER</value>
+  </data>
+  <data name="Profile.Text" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="QrGenerated.Text" xml:space="preserve">
+    <value>Votre code QR a été généré</value>
+  </data>
+  <data name="RegisterUser.Text" xml:space="preserve">
+    <value>INSCRIRE UTILISATEUR</value>
+  </data>
+  <data name="Remove.Text" xml:space="preserve">
+    <value>SUPPRIMER</value>
+  </data>
+  <data name="RemoveCard" xml:space="preserve">
+    <value>Retirer la carte ?</value>
+  </data>
+  <data name="RequiredBank" xml:space="preserve">
+    <value>Entrer le nom de la banque</value>
+  </data>
+  <data name="RequiredCard" xml:space="preserve">
+    <value>Entrer le numéro de la carte</value>
+  </data>
+  <data name="RequiredCVV" xml:space="preserve">
+    <value>Entrer CVV</value>
+  </data>
+  <data name="RequiredID" xml:space="preserve">
+    <value>N° de l’ID est requis.</value>
+  </data>
+  <data name="RequiredPassword" xml:space="preserve">
+    <value>Mot de passe requis.</value>
+  </data>
+  <data name="ResetPin.Text" xml:space="preserve">
+    <value>Réinitialiser le code PIN de l’utilisateur</value>
+  </data>
+  <data name="ValidPassword" xml:space="preserve">
+    <value>Le mot de passe doit contenir au moins 6 caractères.</value>
+  </data>
+  <data name="VerifyPin.Text" xml:space="preserve">
+    <value>Vérifier code PIN</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="CreateNewUser.Text" xml:space="preserve">
+    <value>Créer un nouvel utilisateur</value>
+  </data>
+  <data name="EnterVerification.PlaceholderText" xml:space="preserve">
+    <value>Entrer le Code de vérification</value>
+  </data>
+  <data name="FirstName.PlaceholderText" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="Forgot.Text" xml:space="preserve">
+    <value>Mot de passe oublié? Cliquer ici pour réinitialiser</value>
+  </data>
+  <data name="Home.Text" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="ManageUserCard.Text" xml:space="preserve">
+    <value>Gérer les cartes de l'utilisateur</value>
+  </data>
+  <data name="RequiredFirstName" xml:space="preserve">
+    <value>Prénom est requis</value>
+  </data>
+  <data name="RequiredLastName" xml:space="preserve">
+    <value>Nom  est requis</value>
+  </data>
+  <data name="txAddNewCard.Text" xml:space="preserve">
+    <value>Ajouter Carte</value>
+  </data>
+  <data name="txPrintQR.Text" xml:space="preserve">
+    <value>Imprimer QR</value>
+  </data>
+  <data name="btnScan.Content" xml:space="preserve">
+    <value>Scanner le QR</value>
+  </data>
+  <data name="Logout.Text" xml:space="preserve">
+    <value>Déconnexion</value>
+  </data>
+  <data name="ManageCard.Text" xml:space="preserve">
+    <value>Gérer les cartes</value>
   </data>
 </root>

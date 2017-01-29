@@ -1,0 +1,95 @@
+﻿<local:BindablePage  
+    x:Class="SmartMerchant.AddCardPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SmartMerchant"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding AddCard, Source={StaticResource Locator}}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Background="{StaticResource MyBlack}">
+            <TextBlock x:Uid="AddCard" Text="ADD CARD" FontSize="{StaticResource TextStyleExtraLargeFontSize}" HorizontalAlignment="Center" Margin="0,5"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="30,0">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="{StaticResource TextStyleMediumFontSize}"/>
+                    <Setter Property="Margin" Value="0,0,0,5"/>
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Margin" Value="0,0,0,5"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                </Style>
+
+            </StackPanel.Resources>
+            <TextBlock x:Uid="Bank" Text="Bank"  Margin="0,20,0,0" />
+            <AutoSuggestBox x:Uid="cmbSelectLocation"                                       
+                            ItemsSource="{Binding Bankslist}"
+                    VerticalAlignment="Center"                       
+                       Text="{Binding Bank,Mode=TwoWay}">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="TextChanged">
+                        <core:InvokeCommandAction Command="{Binding UpdateListCommand}"/>
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </AutoSuggestBox>
+
+            <TextBlock x:Uid="CardNo" Text="Card No" />
+            <TextBox HorizontalAlignment="Stretch" InputScope="Number"
+                      Text="{Binding CardNo, Mode=TwoWay}" Margin="0,0,0,10"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock x:Uid="Expiry" Text="Expiry Date" VerticalAlignment="Center" Margin="0,0,40,5" />
+                <TextBox x:Name="ExpiryMonth" Text="{Binding ExpiryMonth,Mode=TwoWay}" Width="70" PlaceholderText="mm" InputScope="Number" MaxLength="2" VerticalAlignment="Stretch" KeyUp="TextBox_KeyUp"/>
+                <TextBlock Text="/" VerticalAlignment="Center" Margin="0,5"/>
+                <TextBox Text="{Binding ExpiryYear,Mode=TwoWay}" PlaceholderText="yy" Width="70" InputScope="Number" MaxLength="2"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Uid="CVV" Text="CVV/CSV" VerticalAlignment="Center" Margin="0,0,54,5" />
+                <TextBox HorizontalAlignment="Stretch" InputScope="Number"
+                      Text="{Binding CVV, Mode=TwoWay}" MaxLength="3" Width="150"/>
+            </StackPanel>
+            <Button Command="{Binding AddCardCommand}" Content="{Binding AddCardNo}" 
+                    Background="{StaticResource MyBlue}" BorderBrush="{StaticResource MyBlue}"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,5,0,10"/>
+
+            <TextBlock x:Uid="Phone" Text="Phone" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBox HorizontalAlignment="Stretch" InputScope="TelephoneNumber" MaxLength="12"
+                      Text="{Binding Phone, Mode=TwoWay}" VerticalAlignment="Center"/>
+                <Button x:Uid="btnVerify" Grid.Column="1" Content="VERIFY" BorderThickness="0" HorizontalAlignment="Left" Background="#63adf2"
+                             Command="{Binding VerifyCommand}"  VerticalAlignment="Center" Margin="5,0,0,0"
+                        IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanNegationConverter}}"  />
+            </Grid>
+
+            <TextBlock x:Uid="Code" Text="Verification Code" />
+            <TextBox HorizontalAlignment="Left" InputScope="Number"
+                      Text="{Binding Code, Mode=TwoWay}" Margin="0,0,0,5" Width="230"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Background="{StaticResource MyBlue}">
+            <Button Command="{Binding SubmitCardCommand}" Content="SUBMIT" 
+                    Background="{StaticResource MyBlue}" BorderBrush="{StaticResource MyBlue}"
+                    x:Uid="Submit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </StackPanel>
+
+    </Grid>
+    </local:BindablePage>
