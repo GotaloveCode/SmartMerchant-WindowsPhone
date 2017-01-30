@@ -117,7 +117,7 @@ namespace SmartMerchant.ViewModel
                 {
                     await UIHelper.ShowAlert((string)output["error"]["message"][0]);
                 }
-            }
+            }           
             else
             {
                 await UIHelper.ShowAlert((string)output["error"]["message"][0]);

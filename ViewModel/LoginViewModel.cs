@@ -97,10 +97,7 @@ namespace SmartMerchant.ViewModel
                 {
                     await UIHelper.ShowAlert((string)output["error"]["message"][0]);
                 }
-            }
-            else if(statuscode == HttpStatusCode.Unauthorized){
-                await UIHelper.ShowAlert(res.GetString("IncorrectCredentials"));
-            }
+            }           
             else
             {
                 await UIHelper.ShowAlert((string)output["error"]["message"][0]);

@@ -60,7 +60,6 @@ namespace SmartMerchant
             }
             else if (response.StatusCode == HttpStatusCode.Unauthorized && Url != "logout" && Url != "auth")
             {
-                await UIHelper.ShowAlert((string)output["message"]);
                 await LogOutAsync();
             }
 
@@ -105,7 +104,6 @@ namespace SmartMerchant
             }
             else if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                await UIHelper.ShowAlert((string)output["message"]);
                 await LogOutAsync();
             }
             
