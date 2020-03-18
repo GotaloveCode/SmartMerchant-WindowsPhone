@@ -30,8 +30,8 @@ namespace SmartMerchant.ViewModel
         public ICommand EditCardCommand { get; private set; }
         public ICommand DeleteCardCommand { get; private set; }
         public ICommand LogoutCommand { get; private set; }
-       
-        
+        public ICommand BackCommand { get; set; }
+
         bool _hasCard = true;
         public bool HasCard
         {
@@ -47,11 +47,11 @@ namespace SmartMerchant.ViewModel
             _navigationService = navigationService;
             if (!IsInDesignMode)
             {
+                BackCommand = new RelayCommand(() => _navigationService.GoBack());
                 LogoutCommand = new RelayCommand(async () => await Rest.LogOutAsync());
                 DeleteCardCommand = new RelayCommand<int>(async (id) => await DeleteCardAsync(id));
                 EditCardCommand = new RelayCommand<int>((id) => EditCard(id));
             }
-
         }
 
         private void EditCard(int id)

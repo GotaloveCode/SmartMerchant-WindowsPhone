@@ -24,69 +24,12 @@
 
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Background="{StaticResource MyBlack}">
-            <AppBarButton Icon="AllApps"  Margin="0" >
-                <Button.Flyout>
-                    <Flyout x:Name="MySettingsFlyOut" Placement="Left">
-                        <Grid>
-                            <Grid.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FF948E8E" Offset="0"/>
-                                    <GradientStop Color="White" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Grid.Background>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Background="{StaticResource MyBlack}">
-                                <StackPanel Margin="0,15">
-                                    <Image Source="ms-appx:///Assets/top.png" Height="60"  Margin="0" />
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel Grid.Row="1">
-
-                                <!--<StackPanel Orientation="Horizontal">
-                                    <interactivity:Interaction.Behaviors>
-                                        <core:EventTriggerBehavior EventName="Tapped">
-                                            <core:NavigateToPageAction TargetPage="SmartCash.PinSettingsPage" />
-                                        </core:EventTriggerBehavior>
-                                    </interactivity:Interaction.Behaviors>
-                                    <AppBarButton Icon="Setting" HorizontalAlignment="Left" Margin="15,0,30,0" Foreground="Black" />
-                                    <TextBlock Text="Pin Settings" x:Uid="PinSettings"
-                                               FontSize="{StaticResource TextStyleLargeFontSize}" 
-                                               Foreground="Black" 
-                                               VerticalAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <interactivity:Interaction.Behaviors>
-                                        <core:EventTriggerBehavior EventName="Tapped">
-                                            <core:NavigateToPageAction TargetPage="SmartCash.ManageCardsPage" />
-                                        </core:EventTriggerBehavior>
-                                    </interactivity:Interaction.Behaviors>
-                                    <AppBarButton Icon="DockLeft" HorizontalAlignment="Left" Margin="15,0,30,0" Foreground="Black" />
-                                    <TextBlock Text="Manage Cards" x:Uid="ManageCards"
-                                               FontSize="{StaticResource TextStyleLargeFontSize}" 
-                                               Foreground="Black" 
-                                               VerticalAlignment="Center"/>
-                                </StackPanel>-->
-
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <interactivity:Interaction.Behaviors>
-                                        <core:EventTriggerBehavior EventName="Tapped">
-                                            <core:InvokeCommandAction Command="{Binding LogoutCommand}"/>
-                                        </core:EventTriggerBehavior>
-                                    </interactivity:Interaction.Behaviors>
-                                    <Image Margin="43,0,56,20" Height="25" Source="ms-appx:///Assets/padlock.png"  />
-                                    <TextBlock Text="Log Out" x:Uid="Logout"
-                                               FontSize="{StaticResource TextStyleLargeFontSize}" 
-                                               Foreground="Black" 
-                                               VerticalAlignment="Center"/>
-                                </StackPanel>
-
-                            </StackPanel>
-                        </Grid>
-                    </Flyout>
-                </Button.Flyout>
+            <AppBarButton Icon="Back"  Margin="0" >
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Tapped">
+                        <core:InvokeCommandAction Command="{Binding BackCommand}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
             </AppBarButton>
             <TextBlock x:Uid="GenerateQr" Text="GENERATE QR" FontSize="{StaticResource TextStyleExtraLargeFontSize}" Margin="40,0,0,0" VerticalAlignment="Center"/>
         </StackPanel>

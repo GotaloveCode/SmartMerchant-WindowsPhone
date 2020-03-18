@@ -18,9 +18,17 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Background="{StaticResource MyBlack}">
-            <TextBlock x:Uid="EditCard" Text="EDIT CARD" FontSize="{StaticResource TextStyleExtraLargeFontSize}" HorizontalAlignment="Center" Margin="0,5"/>
+        <StackPanel Orientation="Horizontal" Background="{StaticResource MyBlack}">
+            <AppBarButton Icon="Back"  Margin="0" >
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Tapped">
+                        <core:InvokeCommandAction Command="{Binding BackCommand}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </AppBarButton>
+            <TextBlock x:Uid="EditCard" Text="EDIT CARD" FontSize="{StaticResource TextStyleExtraLargeFontSize}" Margin="40,0,0,0" VerticalAlignment="Center"/>
         </StackPanel>
+        
         <Image Grid.Row="1" Source="ms-appx:///Assets/receipt.png" Stretch="Fill" />
         <StackPanel Grid.Row="2" Margin="30,0">
             <StackPanel.Resources>
@@ -55,15 +63,16 @@
             <TextBlock x:Uid="Expiry" Text="Expiry Date" />
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
 
-                <TextBox x:Name="ExpiryMonth" Grid.Column="1" Text="{Binding ExpiryMonth,Mode=TwoWay}" Width="60" PlaceholderText="mm" InputScope="Number" MaxLength="2" VerticalAlignment="Stretch" KeyUp="TextBox_KeyUp"/>
+                <TextBox x:Name="ExpiryMonth" Grid.Column="1" Text="{Binding ExpiryMonth,Mode=TwoWay}" Width="100" PlaceholderText="mm" InputScope="Number" MaxLength="2" VerticalAlignment="Stretch" KeyUp="TextBox_KeyUp"/>
                 <TextBlock Text="/" VerticalAlignment="Center" Margin="0,5"/>
-                <TextBox Text="{Binding ExpiryYear,Mode=TwoWay}" PlaceholderText="yy" Width="60" InputScope="Number" MaxLength="2"/>
+                <TextBox Text="{Binding ExpiryYear,Mode=TwoWay}" PlaceholderText="yy" Width="100" InputScope="Number" MaxLength="2"/>
             </StackPanel>
             <TextBlock x:Uid="CVV" Text="CVV/CSV" VerticalAlignment="Center" Margin="0,0,54,5" />
-            <TextBox HorizontalAlignment="Left" InputScope="Number"
-                      Text="{Binding CVV, Mode=TwoWay}" MaxLength="3" Width="150"/>
+            <TextBox InputScope="Number"
+                     x:Uid="EnterCVV"
+                      Text="{Binding CVV, Mode=TwoWay}" MaxLength="3"/>
 
-            <StackPanel Background="{StaticResource MyBlue}" Margin="20,10">
+            <StackPanel Background="{StaticResource MyBlue}" Margin="0,10">
                 <Button Command="{Binding EditCardCommand}" Content="SUBMIT" 
                     Background="{StaticResource MyBlue}" BorderBrush="{StaticResource MyBlue}"
                     x:Uid="Submit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>

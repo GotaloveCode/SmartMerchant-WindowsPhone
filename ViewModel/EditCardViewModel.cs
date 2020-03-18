@@ -20,6 +20,7 @@ namespace SmartMerchant.ViewModel
         protected INavigationService _navigationService;       
         public ICommand UpdateListCommand { get { return new RelayCommand(Suggest); } }
         public ICommand EditCardCommand { get; set; }
+        public ICommand BackCommand { get; set; }
         CardDetail SelectedCard { get; set; }
         string _phoneNumber = "250", _expiryMonth, _expiryYear, _expiry, _cardNo, _bank, _cvv;
         public string Phone { get { return _phoneNumber; } set { _phoneNumber = value; } }
@@ -74,7 +75,11 @@ namespace SmartMerchant.ViewModel
         {
             _navigationService = navigationService;
             if (!IsInDesignMode)
+            {
+                BackCommand = new RelayCommand(() => _navigationService.GoBack());
                 EditCardCommand = new RelayCommand(async () => await EditCard());
+
+            }
         }
 
         //autosuggest filter

@@ -157,7 +157,7 @@
     <value>Les code PIN ne correspondent pas.</value>
   </data>
   <data name="PIN.Text" xml:space="preserve">
-    <value>Mot de passe</value>
+    <value>Code PIN</value>
   </data>
   <data name="Phone.Text" xml:space="preserve">
     <value>N° de téléphone portable</value>
@@ -316,7 +316,7 @@
     <value>Prénom est requis</value>
   </data>
   <data name="RequiredLastName" xml:space="preserve">
-    <value>Nom  est requis</value>
+    <value>Nom est requis</value>
   </data>
   <data name="txAddNewCard.Text" xml:space="preserve">
     <value>Ajouter Carte</value>
@@ -332,5 +332,23 @@
   </data>
   <data name="ManageCard.Text" xml:space="preserve">
     <value>Gérer les cartes</value>
+  </data>
+  <data name="Rescan" xml:space="preserve">
+    <value>Rescan to capture details</value>
+  </data>
+  <data name="EnterCard.PlaceholderText" xml:space="preserve">
+    <value>Entrer le N ° de la carte</value>
+  </data>
+  <data name="EnterCode.PlaceholderText" xml:space="preserve">
+    <value>Entrer Code de vérification</value>
+  </data>
+  <data name="EnterCVV.PlaceholderText" xml:space="preserve">
+    <value>Entrer CVV</value>
+  </data>
+  <data name="LastName.PlaceholderText" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="TypeBank.PlaceholderText" xml:space="preserve">
+    <value>Taper votre banque</value>
   </data>
 </root>

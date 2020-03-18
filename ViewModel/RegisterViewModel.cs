@@ -130,7 +130,7 @@ namespace SmartMerchant.ViewModel
         {
             await UIHelper.ToggleProgressBar(true, res.GetString("Loading"));
             input.Add("phone_number", Phone);
-            input.Add("name", BusinessName);
+            input.Add("business_name", BusinessName);
             input.Add("password", Password);
             input.Add("code", Code);
             input.Add("email", Email);

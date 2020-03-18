@@ -18,9 +18,16 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Background="{StaticResource MyBlack}">
-            <TextBlock x:Uid="AddCard" Text="ADD CARD" FontSize="{StaticResource TextStyleExtraLargeFontSize}" HorizontalAlignment="Center" Margin="0,5"/>
-        </StackPanel>
+        <StackPanel Orientation="Horizontal" Background="{StaticResource MyBlack}">
+            <AppBarButton Icon="Back"  Margin="0" >
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Tapped">
+                        <core:InvokeCommandAction Command="{Binding BackCommand}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </AppBarButton>
+            <TextBlock x:Uid="AddCard" Text="ADD CARD" FontSize="{StaticResource TextStyleLargeFontSize}" Margin="40,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>       
         <StackPanel Grid.Row="1" Margin="30,0">
             <StackPanel.Resources>
                 <Style TargetType="TextBlock">
@@ -37,7 +44,7 @@
 
             </StackPanel.Resources>
             <TextBlock x:Uid="Bank" Text="Bank"  Margin="0,20,0,0" />
-            <AutoSuggestBox x:Uid="cmbSelectLocation"                                       
+            <AutoSuggestBox x:Uid="TypeBank"                                       
                             ItemsSource="{Binding Bankslist}"
                     VerticalAlignment="Center"                       
                        Text="{Binding Bank,Mode=TwoWay}">
@@ -50,18 +57,18 @@
 
             <TextBlock x:Uid="CardNo" Text="Card No" />
             <TextBox HorizontalAlignment="Stretch" InputScope="Number"
-                      Text="{Binding CardNo, Mode=TwoWay}" Margin="0,0,0,10"/>
+                     x:Uid="EnterCard" Text="{Binding CardNo, Mode=TwoWay}" Margin="0,0,0,10"/>
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                 <TextBlock x:Uid="Expiry" Text="Expiry Date" VerticalAlignment="Center" Margin="0,0,40,5" />
-                <TextBox x:Name="ExpiryMonth" Text="{Binding ExpiryMonth,Mode=TwoWay}" Width="70" PlaceholderText="mm" InputScope="Number" MaxLength="2" VerticalAlignment="Stretch" KeyUp="TextBox_KeyUp"/>
+                <TextBox x:Name="ExpiryMonth" Text="{Binding ExpiryMonth,Mode=TwoWay}" Width="100" PlaceholderText="mm" InputScope="Number" MaxLength="2" VerticalAlignment="Stretch" KeyUp="TextBox_KeyUp"/>
                 <TextBlock Text="/" VerticalAlignment="Center" Margin="0,5"/>
-                <TextBox Text="{Binding ExpiryYear,Mode=TwoWay}" PlaceholderText="yy" Width="70" InputScope="Number" MaxLength="2"/>
+                <TextBox Text="{Binding ExpiryYear,Mode=TwoWay}" PlaceholderText="yy" Width="100" InputScope="Number" MaxLength="2"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Uid="CVV" Text="CVV/CSV" VerticalAlignment="Center" Margin="0,0,54,5" />
-                <TextBox HorizontalAlignment="Stretch" InputScope="Number"
-                      Text="{Binding CVV, Mode=TwoWay}" MaxLength="3" Width="150"/>
+                <TextBox x:Uid="EnterCVV" HorizontalAlignment="Stretch" InputScope="Number"
+                      Text="{Binding CVV, Mode=TwoWay}" MaxLength="3" Width="200"/>
             </StackPanel>
             <Button Command="{Binding AddCardCommand}" Content="{Binding AddCardNo}" 
                     Background="{StaticResource MyBlue}" BorderBrush="{StaticResource MyBlue}"
@@ -74,7 +81,7 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <TextBox HorizontalAlignment="Stretch" InputScope="TelephoneNumber" MaxLength="12"
+                <TextBox HorizontalAlignment="Stretch" InputScope="TelephoneNumber" PlaceholderText="2507xxxxxxxx" MaxLength="12"
                       Text="{Binding Phone, Mode=TwoWay}" VerticalAlignment="Center"/>
                 <Button x:Uid="btnVerify" Grid.Column="1" Content="VERIFY" BorderThickness="0" HorizontalAlignment="Left" Background="#63adf2"
                              Command="{Binding VerifyCommand}"  VerticalAlignment="Center" Margin="5,0,0,0"
@@ -82,8 +89,8 @@
             </Grid>
 
             <TextBlock x:Uid="Code" Text="Verification Code" />
-            <TextBox HorizontalAlignment="Left" InputScope="Number"
-                      Text="{Binding Code, Mode=TwoWay}" Margin="0,0,0,5" Width="230"/>
+            <TextBox InputScope="Number" x:Uid="EnterCode"
+                      Text="{Binding Code, Mode=TwoWay}" Margin="0,0,0,5"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Background="{StaticResource MyBlue}">
             <Button Command="{Binding SubmitCardCommand}" Content="SUBMIT" 

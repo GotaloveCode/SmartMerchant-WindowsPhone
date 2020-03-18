@@ -8,7 +8,7 @@ using System.Windows.Input;
 using Windows.ApplicationModel.Resources;
 using Windows.Data.Json;
 using Windows.Storage;
-
+using System;
 
 namespace SmartMerchant.ViewModel
 {
@@ -18,14 +18,15 @@ namespace SmartMerchant.ViewModel
         #region
         protected INavigationService _navigationService;
         public ICommand AddUserCommand { get; set; }
+        public ICommand BackCommand { get; set; }
         public ICommand VerifyCommand { get; set; }
         public string FirstName { get { return _firstName; } set { _firstName = value; } }
         public string LastName { get { return _lastName; } set { _lastName = value; } }
         public string FullName { get { return string.Format("{0} {1}", _firstName, _lastName); } set { _fullName = value; } }
-        public string Phone { get { return phoneNumber; } set { phoneNumber = value; } }
+        public string Phone { get; set; }
         public string IdNo { get; set; }        
         public string Code { get; set; }
-        string phoneNumber = "250", _PIN, _confirm, _firstName, _lastName, _fullName;
+        string _PIN, _confirm, _firstName, _lastName, _fullName;
         public string PIN
         {
             get { return _PIN = string.Format("{0}{1}{2}{3}", PIN1, PIN2, PIN3, PIN4); }
@@ -64,6 +65,7 @@ namespace SmartMerchant.ViewModel
             _navigationService = navigationService;
             if (!IsInDesignMode)
             {
+                BackCommand = new RelayCommand( () => _navigationService.GoBack());
                 AddUserCommand = new RelayCommand(async () => await AddUser());               
                 VerifyCommand = new RelayCommand(async () => await Verify());
             }
@@ -167,7 +169,7 @@ namespace SmartMerchant.ViewModel
 
             if (statuscode == HttpStatusCode.OK)
             {
-                if ((string)output["status"] != "error")
+                if ((string)output["status"] == "success")
                 {
                     _navigationService.NavigateTo("AddCard",Phone);
                     await UIHelper.ShowAlert((string)output["message"]);

@@ -21,8 +21,8 @@ namespace SmartMerchant.ViewModel
         #region
         protected INavigationService _navigationService;
         public ICommand GenerateCommand { get; set; }
-        public ICommand PrintCommand { get; set; }       
-
+        public ICommand PrintCommand { get; set; }
+        public ICommand BackCommand { get; set; }
         public WriteableBitmap QRImage { get { return _qrImage; } set { Set(() => QRImage, ref _qrImage, value); } }
         WriteableBitmap _qrImage;
         public string Phone { get { return phoneNumber; } set { phoneNumber = value; } }
@@ -60,15 +60,16 @@ namespace SmartMerchant.ViewModel
             _navigationService = navigationService;
             if (!IsInDesignMode)
             {
+                BackCommand = new RelayCommand(() => _navigationService.GoBack());
                 GenerateCommand = new RelayCommand(async () => await Generate());               
-                PrintCommand = new RelayCommand(async () => await PrintQR());
+                //PrintCommand = new RelayCommand(async () => await PrintQR());
             }
         }
 
-        private Task PrintQR()
-        {
-            throw new NotImplementedException();
-        }
+        //private Task PrintQR()
+        //{
+            
+        //}
 
         private async Task Generate()
         {
@@ -108,15 +109,8 @@ namespace SmartMerchant.ViewModel
 
             if (statuscode == HttpStatusCode.OK)
             {
-                if ((string)output["status"] == "success")
-                {
                     QRImage = GetBitmap((string)output["data"]);
                     HasQR = true;
-                }
-                else
-                {
-                    await UIHelper.ShowAlert((string)output["error"]["message"][0]);
-                }
             }           
             else
             {

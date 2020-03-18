@@ -23,9 +23,17 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Background="{StaticResource MyBlack}">
-            <TextBlock x:Uid="ManageCard" Text="MANAGE CARD" FontSize="{StaticResource TextStyleExtraLargeFontSize}" HorizontalAlignment="Center" Margin="0,5"/>
+        <StackPanel Orientation="Horizontal" Background="{StaticResource MyBlack}">
+            <AppBarButton Icon="Back"  Margin="0" >
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Tapped">
+                        <core:InvokeCommandAction Command="{Binding BackCommand}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </AppBarButton>
+            <TextBlock x:Uid="ManageCard" Text="MANAGE CARD" FontSize="{StaticResource TextStyleExtraLargeFontSize}" Margin="40,0,0,0" VerticalAlignment="Center"/>
         </StackPanel>
+        
         <ListView Grid.Row="1" Name="ListView" 
                   ItemsSource="{Binding Cards}"
                   Visibility="{Binding HasCard,Converter={StaticResource BooleanToVisibilityConverter}}">

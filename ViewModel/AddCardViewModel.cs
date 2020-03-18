@@ -21,6 +21,7 @@ namespace SmartMerchant.ViewModel
         //Properties
         #region
         protected INavigationService _navigationService;
+        public ICommand BackCommand { get; set; }
         public ICommand UpdateListCommand { get { return new RelayCommand(Suggest); } }
         public ICommand AddCardCommand { get; set; }
         public ICommand SubmitCardCommand { get; set; }
@@ -86,6 +87,7 @@ namespace SmartMerchant.ViewModel
             if (!IsInDesignMode)
             {
                 AddCardNo = res.GetString("AddCard/Text");
+                BackCommand = new RelayCommand(() => _navigationService.GoBack());
                 AddCardCommand = new RelayCommand(async () => await AddToCardsList());
                 SubmitCardCommand = new RelayCommand(async () => await AddCard());
                 VerifyCommand = new RelayCommand(async () => await Verify());

@@ -339,11 +339,11 @@ namespace SmartMerchant
                 {
                     if (txtAmount.Text.Length < 1)
                     {
-                        await UIHelper.ShowAlert("Enter amount");
+                        await UIHelper.ShowAlert(res.GetString("Enter/Text"));
                     }
                     if (ScannedCard.Length < 1)
                     {
-                        await UIHelper.ShowAlert("Rescan to capture details");
+                        await UIHelper.ShowAlert(res.GetString("Rescan"));
                     }
 
                 }
